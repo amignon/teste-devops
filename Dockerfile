@@ -1,13 +1,18 @@
+# Dockerfile
 FROM node:14
 
-WORKDIR /app
+# Cria o diretório de trabalho
+WORKDIR /usr/src/app
 
+# Copia o arquivo package.json e instala as dependências
 COPY package*.json ./
-
 RUN npm install
 
+# Copia o restante do código da aplicação
 COPY . .
 
-EXPOSE 3000
+# Expõe a porta 8080
+EXPOSE 8080
 
-CMD ["node", "index.js"]
+# Executa a aplicação
+CMD [ "node", "index.js" ]
